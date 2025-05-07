@@ -39,7 +39,7 @@ export function DatePicker({ date, onSelect, className }: DatePickerProps) {
             className
           )}
         >
-          <CalendarIcon className="mr-2 h-4 w-4" />
+          <CalendarIcon className="mr-2 size-4" />
           {selectedDate ? format(selectedDate, "PPP") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
