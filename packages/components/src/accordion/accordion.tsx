@@ -8,7 +8,12 @@ import { cn } from "../lib/utils.js";
 
 const Accordion = AccordionPrimitive.Root;
 
-const AccordionItem = ({ className, ...props }) => (
+export interface AccordionItemProps extends 
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> {
+  value: string;
+}
+
+const AccordionItem = ({ className, ...props }: AccordionItemProps) => (
   <AccordionPrimitive.Item
     className={cn("border-b", className)}
     {...props}
@@ -16,7 +21,10 @@ const AccordionItem = ({ className, ...props }) => (
 );
 AccordionItem.displayName = "AccordionItem";
 
-const AccordionTrigger = ({ className, children, ...props }) => (
+export interface AccordionTriggerProps extends
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> {}
+
+const AccordionTrigger = ({ className, children, ...props }: AccordionTriggerProps) => (
   <AccordionPrimitive.Header className="flex">
     <AccordionPrimitive.Trigger
       className={cn(
@@ -32,7 +40,10 @@ const AccordionTrigger = ({ className, children, ...props }) => (
 );
 AccordionTrigger.displayName = "AccordionTrigger";
 
-const AccordionContent = ({ className, children, ...props }) => (
+export interface AccordionContentProps extends
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content> {}
+
+const AccordionContent = ({ className, children, ...props }: AccordionContentProps) => (
   <AccordionPrimitive.Content
     className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
     {...props}

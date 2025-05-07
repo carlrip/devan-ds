@@ -62,15 +62,16 @@ export function Combobox({
         </Button>
       </PopoverTrigger>
       <PopoverContent className={cn("w-full p-0", popoverClassName)}>
-        <Command>
-          <CommandInput placeholder={placeholder} />
+        <Command className="">
+          <CommandInput className="" placeholder={placeholder} />
           <CommandEmpty>{emptyText}</CommandEmpty>
-          <CommandGroup>
+          <CommandGroup className="">
             {options.map((option) => (
               <CommandItem
                 key={option.value}
                 value={option.value}
-                onSelect={(currentValue) => {
+                className=""
+                onSelect={(currentValue: string) => {
                   const newValue = currentValue === selected ? "" : currentValue
                   setSelected(newValue)
                   if (onValueChange) {

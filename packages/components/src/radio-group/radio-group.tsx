@@ -6,7 +6,10 @@ import { Circle } from "lucide-react"
 
 import { cn } from "../lib/utils"
 
-const RadioGroup = ({ className, ...props }) => {
+export interface RadioGroupProps extends
+  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> {}
+
+const RadioGroup = ({ className, ...props }: RadioGroupProps) => {
   return (
     <RadioGroupPrimitive.Root
       className={cn("grid gap-2", className)}
@@ -16,7 +19,12 @@ const RadioGroup = ({ className, ...props }) => {
 }
 RadioGroup.displayName = RadioGroupPrimitive.Root.displayName
 
-const RadioGroupItem = ({ className, ...props }) => {
+export interface RadioGroupItemProps extends
+  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> {
+  value: string;
+}
+
+const RadioGroupItem = ({ className, ...props }: RadioGroupItemProps) => {
   return (
     <RadioGroupPrimitive.Item
       className={cn(
