@@ -5,7 +5,7 @@ import { cn } from "../lib/utils"
 export interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
 
-const Textarea = ({ className, ...props }) => {
+const Textarea = ({ className, ...props }: TextareaProps) => {
   return (
     <textarea
       className={cn(

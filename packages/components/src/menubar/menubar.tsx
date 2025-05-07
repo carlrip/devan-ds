@@ -16,7 +16,10 @@ const MenubarSub = MenubarPrimitive.Sub
 
 const MenubarRadioGroup = MenubarPrimitive.RadioGroup
 
-const Menubar = ({ className, ...props }) => (
+export interface MenubarProps extends
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Root> {}
+
+const Menubar = ({ className, ...props }: MenubarProps) => (
   <MenubarPrimitive.Root
     className={cn(
       "flex size-10 items-center space-x-1 rounded-md border bg-background p-1",
@@ -27,7 +30,10 @@ const Menubar = ({ className, ...props }) => (
 )
 Menubar.displayName = MenubarPrimitive.Root.displayName
 
-const MenubarTrigger = ({ className, ...props }) => (
+export interface MenubarTriggerProps extends
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Trigger> {}
+
+const MenubarTrigger = ({ className, ...props }: MenubarTriggerProps) => (
   <MenubarPrimitive.Trigger
     className={cn(
       "flex cursor-default select-none items-center rounded-sm px-3 py-1.5 text-sm font-medium outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
@@ -38,7 +44,12 @@ const MenubarTrigger = ({ className, ...props }) => (
 )
 MenubarTrigger.displayName = MenubarPrimitive.Trigger.displayName
 
-const MenubarSubTrigger = ({ className, inset, children, ...props }) => (
+export interface MenubarSubTriggerProps extends
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.SubTrigger> {
+  inset?: boolean;
+}
+
+const MenubarSubTrigger = ({ className, inset, children, ...props }: MenubarSubTriggerProps) => (
   <MenubarPrimitive.SubTrigger
     className={cn(
       "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
@@ -53,7 +64,10 @@ const MenubarSubTrigger = ({ className, inset, children, ...props }) => (
 )
 MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName
 
-const MenubarSubContent = ({ className, ...props }) => (
+export interface MenubarSubContentProps extends
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.SubContent> {}
+
+const MenubarSubContent = ({ className, ...props }: MenubarSubContentProps) => (
   <MenubarPrimitive.SubContent
     className={cn(
       "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
@@ -64,8 +78,15 @@ const MenubarSubContent = ({ className, ...props }) => (
 )
 MenubarSubContent.displayName = MenubarPrimitive.SubContent.displayName
 
+export interface MenubarContentProps extends
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Content> {
+  alignOffset?: number;
+  sideOffset?: number;
+  align?: "start" | "center" | "end";
+}
+
 const MenubarContent = (
-  { className, align = "start", alignOffset = -4, sideOffset = 8, ...props }
+  { className, align = "start", alignOffset = -4, sideOffset = 8, ...props }: MenubarContentProps
 ) => (
   <MenubarPrimitive.Portal>
     <MenubarPrimitive.Content
@@ -82,7 +103,12 @@ const MenubarContent = (
 )
 MenubarContent.displayName = MenubarPrimitive.Content.displayName
 
-const MenubarItem = ({ className, inset, ...props }) => (
+export interface MenubarItemProps extends
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Item> {
+  inset?: boolean;
+}
+
+const MenubarItem = ({ className, inset, ...props }: MenubarItemProps) => (
   <MenubarPrimitive.Item
     className={cn(
       "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
@@ -94,7 +120,12 @@ const MenubarItem = ({ className, inset, ...props }) => (
 )
 MenubarItem.displayName = MenubarPrimitive.Item.displayName
 
-const MenubarCheckboxItem = ({ className, children, checked, ...props }) => (
+export interface MenubarCheckboxItemProps extends
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.CheckboxItem> {
+  checked?: boolean;
+}
+
+const MenubarCheckboxItem = ({ className, children, checked, ...props }: MenubarCheckboxItemProps) => (
   <MenubarPrimitive.CheckboxItem
     className={cn(
       "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
@@ -113,7 +144,12 @@ const MenubarCheckboxItem = ({ className, children, checked, ...props }) => (
 )
 MenubarCheckboxItem.displayName = MenubarPrimitive.CheckboxItem.displayName
 
-const MenubarRadioItem = ({ className, children, ...props }) => (
+export interface MenubarRadioItemProps extends
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.RadioItem> {
+  value: string;
+}
+
+const MenubarRadioItem = ({ className, children, ...props }: MenubarRadioItemProps) => (
   <MenubarPrimitive.RadioItem
     className={cn(
       "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
@@ -131,7 +167,12 @@ const MenubarRadioItem = ({ className, children, ...props }) => (
 )
 MenubarRadioItem.displayName = MenubarPrimitive.RadioItem.displayName
 
-const MenubarLabel = ({ className, inset, ...props }) => (
+export interface MenubarLabelProps extends
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Label> {
+  inset?: boolean;
+}
+
+const MenubarLabel = ({ className, inset, ...props }: MenubarLabelProps) => (
   <MenubarPrimitive.Label
     className={cn(
       "px-2 py-1.5 text-sm font-semibold",
@@ -143,7 +184,10 @@ const MenubarLabel = ({ className, inset, ...props }) => (
 )
 MenubarLabel.displayName = MenubarPrimitive.Label.displayName
 
-const MenubarSeparator = ({ className, ...props }) => (
+export interface MenubarSeparatorProps extends
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Separator> {}
+
+const MenubarSeparator = ({ className, ...props }: MenubarSeparatorProps) => (
   <MenubarPrimitive.Separator
     className={cn("-mx-1 my-1 size-px bg-muted", className)}
     {...props}

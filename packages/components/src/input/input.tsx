@@ -5,7 +5,7 @@ import { cn } from "../lib/utils"
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-const Input = ({ className, type, ...props }) => {
+const Input = ({ className, type, ...props }: InputProps) => {
   return (
     <input
       type={type}

@@ -5,12 +5,18 @@ import * as SeparatorPrimitive from "@radix-ui/react-separator"
 
 import { cn } from "../lib/utils"
 
+export interface SeparatorProps extends
+  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root> {
+  orientation?: "horizontal" | "vertical";
+  decorative?: boolean;
+}
+
 const Separator = ({
   className,
-  orientation = "horizontal" as "horizontal" | "vertical",
+  orientation = "horizontal",
   decorative = true,
   ...props
-}) => (
+}: SeparatorProps) => (
   <SeparatorPrimitive.Root
     decorative={decorative}
     orientation={orientation}

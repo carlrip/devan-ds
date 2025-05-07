@@ -9,7 +9,10 @@ import { cn } from "../lib/utils"
 
 const ToastProvider = ToastPrimitives.Provider
 
-const ToastViewport = ({ className, ...props }) => (
+export interface ToastViewportProps extends
+  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Viewport> {}
+
+const ToastViewport = ({ className, ...props }: ToastViewportProps) => (
   <ToastPrimitives.Viewport
     className={cn(
       "fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]",
@@ -36,7 +39,11 @@ const toastVariants = cva(
   }
 )
 
-const Toast = ({ className, variant, ...props }) => {
+export interface ToastRootProps extends 
+  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Root>,
+  VariantProps<typeof toastVariants> {}
+
+const Toast = ({ className, variant, ...props }: ToastRootProps) => {
   return (
     <ToastPrimitives.Root
       className={cn(toastVariants({ variant }), className)}
@@ -46,7 +53,12 @@ const Toast = ({ className, variant, ...props }) => {
 }
 Toast.displayName = ToastPrimitives.Root.displayName
 
-const ToastAction = ({ className, ...props }) => (
+export interface ToastActionProps extends
+  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Action> {
+  altText: string;
+}
+
+const ToastAction = ({ className, ...props }: ToastActionProps) => (
   <ToastPrimitives.Action
     className={cn(
       "inline-flex size-8 shrink-0 items-center justify-center rounded-md border bg-transparent px-3 text-sm font-medium ring-offset-background transition-colors hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 group-[.destructive]:border-muted/40 group-[.destructive]:hover:border-destructive/30 group-[.destructive]:hover:bg-destructive group-[.destructive]:hover:text-destructive-foreground group-[.destructive]:focus:ring-destructive",
@@ -57,7 +69,10 @@ const ToastAction = ({ className, ...props }) => (
 )
 ToastAction.displayName = ToastPrimitives.Action.displayName
 
-const ToastClose = ({ className, ...props }) => (
+export interface ToastCloseProps extends
+  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Close> {}
+
+const ToastClose = ({ className, ...props }: ToastCloseProps) => (
   <ToastPrimitives.Close
     className={cn(
       "absolute right-2 top-2 rounded-md p-1 text-foreground/50 opacity-0 transition-opacity hover:text-foreground focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100 group-[.destructive]:text-red-300 group-[.destructive]:hover:text-red-50 group-[.destructive]:focus:ring-red-400 group-[.destructive]:focus:ring-offset-red-600",
@@ -71,7 +86,10 @@ const ToastClose = ({ className, ...props }) => (
 )
 ToastClose.displayName = ToastPrimitives.Close.displayName
 
-const ToastTitle = ({ className, ...props }) => (
+export interface ToastTitleProps extends
+  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Title> {}
+
+const ToastTitle = ({ className, ...props }: ToastTitleProps) => (
   <ToastPrimitives.Title
     className={cn("text-sm font-semibold", className)}
     {...props}
@@ -79,7 +97,10 @@ const ToastTitle = ({ className, ...props }) => (
 )
 ToastTitle.displayName = ToastPrimitives.Title.displayName
 
-const ToastDescription = ({ className, ...props }) => (
+export interface ToastDescriptionProps extends
+  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Description> {}
+
+const ToastDescription = ({ className, ...props }: ToastDescriptionProps) => (
   <ToastPrimitives.Description
     className={cn("text-sm opacity-90", className)}
     {...props}
