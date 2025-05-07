@@ -19,6 +19,7 @@
     "react-dom": "^19.0.0"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
@@ -50,7 +51,12 @@
     "clsx": "^2.1.0",
     "cmdk": "^1.0.4",
     "date-fns": "^3.6.0",
+    "embla-carousel-react": "^8.6.0",
     "lucide-react": "^0.364.0",
+    "react-day-picker": "^9.6.7",
+    "react-hook-form": "^7.56.2",
+    "react-resizable-panels": "^3.0.1",
+    "sonner": "^2.0.3",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7"
   },
